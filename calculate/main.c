@@ -1,4 +1,4 @@
-#include <stdio.h>
+    #include <stdio.h>
 #include <stdlib.h>
 #include "my_math.h"
 #include "console_commands.h"
@@ -125,7 +125,7 @@ int command_area_f(int argc, char *argv[])
 
 	double sum = 0;
 	double i;
-	int err;
+	int err = 0;
 	err |= integral_accurate_runge(&i, f1, x12, x13, eps2, n);
 	sum += i;
 	err |= integral_accurate_runge(&i, f3, x13, x23, eps2, n);
@@ -146,7 +146,7 @@ int main(int argc, char *argv[])
 {
 	if(argc == 1)
 	{
-		int command_area_f(argc - 1, argv + 1);
+		command_area_f(argc - 1, argv + 1);
 		return 0;
 	}
 

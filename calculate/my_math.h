@@ -34,6 +34,6 @@ double root(math_func_t f, math_func_t g, math_func_t f_der, math_func_t g_der,
  *	-1 - integral can't be calculated for this function
  */
 int integral_accurate_runge(double *result, math_func_t f, double left,
-	double right, double eps, unsigned long lonf n_start);
+	double right, double eps, unsigned long long n_start);
 
 #endif /*MY_MATH_H*/

@@ -18,13 +18,16 @@
  * Constant used for restriction of Runge method. It garants that function won't
  * have looping
  */
-#define MAX_N 1 << 32
+#define MAX_N 1ull << 32
 
 double aproach_chord(math_func_t f, math_func_t g, double left, double right);
 
 double aproach_newton(math_func_t f, math_func_t f_der,
   math_func_t g, math_func_t g_der, double x);
+
 double convexValue(math_func_t f, math_func_t g, double left, double right);
+
+double integral_simpson(math_func_t f, double left, double right, int n_2);
 
 void swaplf(double *a, double *b)
 {
@@ -88,7 +91,7 @@ double convexValue(math_func_t f, math_func_t g, double left, double right)
  *	-1 - integral can't be calculated for this function
  */
 int integral_accurate_runge(double *result, math_func_t f, double left,
-	double right, double eps, unsigned long lonf n_start)
+	double right, double eps, unsigned long long n_start)
 {
 	int ret = 0;
 	double s1, s2;
