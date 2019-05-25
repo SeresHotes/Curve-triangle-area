@@ -1,3 +1,8 @@
+/*
+ * This module generates operation tree of derivative of given function
+ */
+
+
 #ifndef DER_MAIN_H
 #define DER_MAIN_H
 #include "op_node.h"

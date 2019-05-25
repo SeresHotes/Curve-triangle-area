@@ -1,4 +1,7 @@
-
+/*
+ * This module is used to create operation tree from polka notation
+ */
+ 
 #ifndef STACK_H
 #define STACK_H
 #include "op_node.h"

@@ -7,7 +7,12 @@
 
 
 
-
+/*
+ * Reads file containig inverse polka notation function and makes operarion tree
+ * It pushes operation in stack, if the operarion is a const or x. When in reaches
+ * binary or unary operation, two or one operations respectively are poped and
+ * referenced by the operation.
+ */
 op_node_t * op_read_and_get_tree(FILE *file)
 {
 

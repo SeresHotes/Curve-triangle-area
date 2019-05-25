@@ -1,3 +1,7 @@
+/*
+ * This module generates asm code from operarion tree
+ */
+
 #ifndef GEN_MAIN_H
 #define GEN_MAIN_H
 

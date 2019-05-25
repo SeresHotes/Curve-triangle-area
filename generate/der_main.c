@@ -1,6 +1,15 @@
+/*
+ * This module generates operation tree of derivative of given function
+ */
+
 #include "op_node.h"
 #include "der_main.h"
 
+/*
+ * For every operation in tree this function takes deriative of complex function.
+ * For examle, if it gets cos(t), it makes -t'*sin(t), no matter either t is
+ * function ot constant.
+ */
 op_node_t *der_get_der_function(op_node_t *top)
 {
 

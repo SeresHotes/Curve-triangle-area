@@ -1,3 +1,8 @@
+/*
+ * This module generates asm code from operarion tree
+ */
+
+
 #include "op_node.h"
 #include "gen_samples.h"
 #include "gen_main.h"

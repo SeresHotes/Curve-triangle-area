@@ -1,3 +1,6 @@
+/*
+ * This module is used to generate asm code of each type of operation
+ */
 #include "gen_samples.h"
 #include "polka_read.h"
 #include <stdio.h>

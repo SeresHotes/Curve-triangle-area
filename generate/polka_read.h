@@ -1,3 +1,9 @@
+/*
+ * This module provides base for all program. It realizes word from file,
+ * containing inverse polka notations function and returns type of the word
+ *
+ */
+
 #ifndef POLKA_READ_H
 #define POLKA_READ_H
 
@@ -19,7 +25,7 @@ typedef enum {
 	CTG,
 	SIN,
 	COS,
-	SPE_1_DIX_X_2
+	SPE_1_DIX_X_2 // y = 1/(x^2). Used for derivative of tan
 } op_un_t;
 
 int polka_realize_word(char* word, int *op_base, int *op, double *value);

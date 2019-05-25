@@ -1,4 +1,8 @@
-
+/*
+ * This module provides base for all program. It realizes word from file,
+ * containing inverse polka notations function and returns type of the word
+ *
+ */
 
 #include "polka_read.h"
 #include <stdio.h>

@@ -1,3 +1,7 @@
+/*
+ * This module is used to generate asm code of each type of operation
+ */
+
 #ifndef GEN_SAMPLES_H
 #define GEN_SAMPLES_H
 #include <stdio.h>
