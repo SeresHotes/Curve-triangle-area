@@ -49,7 +49,13 @@ int polka_realize_word(char* word, int* op_base, int* op, double* value)
 			*op = PLU;
 			break;
 		case '-':
-			*op = MIN;
+			if(word[1] == ' ')
+				*op = MIN;
+			else
+			{
+				*op_base = CONST;
+				sscanf(word, "%lf", value);
+			}
 			break;
 		case '*':
 			*op = MUL;
