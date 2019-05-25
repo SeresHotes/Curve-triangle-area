@@ -106,23 +106,47 @@ int command_read_f(int argc, char *argv[])
 
 }
 
+int command_area_f(int argc, char *argv[])
+{
+	if(argc < 1)
+	{
+		fprintf(stderr, "%s\n", "ERROR: not enough arguments. See --help");
+		return 1;
+	}
+
+	double x12, x23, x13;
+	double eps1 = global.eps / 10;
+	double eps2 = global.eps / 10;
+	int n = 1 / eps2 + 1;
+
+	x12 = root(f1, f2, f1_der, f2_der, global.left, global.right, eps1);
+	x23 = root(f2, f3, f2_der, f3_der, global.left, global.right, eps1);
+	x13 = root(f1, f3, f1_der, f3_der, global.left, global.right, eps1);
+
+	double sum = 0;
+	double i;
+	int err;
+	err |= integral_accurate_runge(&i, f1, x12, x13, eps2, n);
+	sum += i;
+	err |= integral_accurate_runge(&i, f3, x13, x23, eps2, n);
+	sum += i;
+	err |= integral_accurate_runge(&i, f2, x23, x12, eps2, n);
+	sum += i;
+	if(err)
+	{
+		fprintf(stderr, "%s\n", "Function is not integrable by riman");
+		return 1;
+	}
+	printf("%f\n", fabs(sum));
+	return 1;
+
+}
 
 int main(int argc, char *argv[])
 {
 	if(argc == 1)
 	{
-		double x12, x23, x13;
-		double eps1 = global.eps / 10;
-		double eps2 = global.eps / 10;
-		int n = 1 / eps2 + 1;
-		x12 = root(f1, f2, f1_der, f2_der, global.left, global.right, eps1);
-		x23 = root(f2, f3, f2_der, f3_der, global.left, global.right, eps1);
-		x13 = root(f1, f3, f1_der, f3_der, global.left, global.right, eps1);
-		double sum = 0;
-		double a1 = integral_simpson(f1, x12, x13, n);
-		double a2 = integral_simpson(f3, x13, x23, n);
-		double a3 = integral_simpson(f2, x23, x12, n);
-		printf("%f %f %f %f\n", fabs(a1 + a2 + a3), a1, a2, a3);
+		int command_area_f(argc - 1, argv + 1);
 		return 0;
 	}
 
@@ -130,7 +154,7 @@ int main(int argc, char *argv[])
 	{
 		.name_ext = "--root",
 		.name_red = "",
-		.desc_args = "",
+		.desc_args = "<function number> <function number>",
 		.description = "calculates intersection of functions",
 		.func = command_root_f
 	};
@@ -150,15 +174,24 @@ int main(int argc, char *argv[])
 		.description = "reads from the file border values",
 		.func = command_read_f
 	};
+	command_t command_area =
+	{
+		.name_ext = "--area",
+		.name_red = "-a",
+		.desc_args = "",
+		.description = "calculates area of curved triangle formed by 3 functions",
+		.func = command_area_f
+	};
 
 
 
-	global.command_array_size = 4;
+	global.command_array_size = 5;
 	global.command_array = malloc(sizeof(command_t) * global.command_array_size);
 	global.command_array[0] = command_root;
 	global.command_array[1] = command_help;
 	global.command_array[2] = command_read;
 	global.command_array[3] = command_border;
+	global.command_array[4] = command_area;
 
 
 

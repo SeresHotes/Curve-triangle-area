@@ -1,4 +1,12 @@
-
+/*
+ * This module processes input from console and decides what to do.
+ *
+ * "command_t" refers to command to be executed
+ * "global" refers to global settings for all console commands
+ * "command_realize" realizes command and executes it
+ * "command_help_f" - base help function
+ * all command_t command should be added to global.command_array
+ */
 #include "console_commands.h"
 #include <stdio.h>
 #include <string.h>
@@ -22,7 +30,7 @@ int command_help_f(int argc, char *argv[])
 
 
 	    if(global.command_array[i].name_ext)
-			printf("%-12s %-15s ", global.command_array[i].name_ext, global.command_array[i].desc_args);
+			printf("%-12s %-30s ", global.command_array[i].name_ext, global.command_array[i].desc_args);
 	    else
 			printf("%-21s", "");
 

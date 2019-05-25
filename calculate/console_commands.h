@@ -1,3 +1,13 @@
+/*
+ * This module processes input from console and decides what to do.
+ *
+ * "command_t" refers to command to be executed
+ * "global" refers to global settings for all console commands
+ * "command_realize" realizes command and executes it
+ * "command_help_f" - base help function
+ * all command_t command should be added to global.command_array
+ */
+
 #ifndef CONSOLE_COMMANDS_H
 #define CONSOLE_COMMANDS_H
 
