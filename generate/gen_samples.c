@@ -9,9 +9,11 @@
 void gen_sample_init(FILE* file, char *fun_name)
 {
 	fprintf(file, "global %s\n", fun_name);
+	fprintf(file, "CEXTERN exp\n");
 	fprintf(file, "%s:\n", fun_name);
 	fprintf(file, "\tpush ebp\n");
 	fprintf(file, "\tmov ebp, esp\n\n");
+	fprintf(file, "\tpush ebx\n");
 
 	fprintf(file, "\tfinit\n");
 }
@@ -36,6 +38,15 @@ void gen_sample_unar(FILE* file, int op)
 
 	switch(op)
 	{
+	case EXP:
+		fprintf(file, "\tmov ebx, esp\n");
+		fprintf(file, "\tand esp, -16\n");
+		fprintf(file, "\tsub esp, 16\n");
+		fprintf(file, "\tfstp qword[ebx]\n");
+		fprintf(file, "\tcall exp\n");
+		fprintf(file, "\tmov esp, ebx\n");
+
+		break;
 	case COS:
 		fprintf(file, "\tfcos\n");
 		break;

@@ -19,6 +19,9 @@ int polka_realize_word(char* word, int* op_base, int* op, double* value)
 		*op_base = UNAR;
 		switch(word[0])
 		{
+		case 'e':
+			*op = EXP;
+			break;
 		case 's':
 			*op = SIN;
 			break;

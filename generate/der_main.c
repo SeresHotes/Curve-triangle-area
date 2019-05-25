@@ -109,6 +109,20 @@ op_node_t *der_get_der_function(op_node_t *top)
 			t2->args[1] = t1;
 
 			break;
+		case EXP:
+			t1 = top->args[0];
+			op_node_config_binar(top, MUL, 0, 0);
+
+			t2 = op_node_create_unar(EXP, 0);
+			top->args[0] = t2;
+
+			t3 = op_node_create_clear();
+			op_node_hard_cpy(t3, t1);
+			t2->args[0] = t3;
+
+			t1 = der_get_der_function(t1);
+			top->args[1] = t1;
+			break;
 		}
 		break;
 	case BINAR:
