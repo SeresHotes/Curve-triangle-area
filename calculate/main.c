@@ -142,11 +142,52 @@ int command_area_f(int argc, char *argv[])
 
 }
 
+
+int command_integral_f(int argc, char *argv[])
+{
+	if(argc < 2)
+	{
+		fprintf(stderr, "%s\n", "ERROR: not enough arguments. See --help");
+		return 1;
+	}
+	double eps2 = global.eps / 10;
+	int n = 1 / eps2 + 1;
+
+	int k1;
+
+	sscanf(argv[1], "%d", &k1);
+	math_func_t t1;
+	switch(k1)
+	{
+	case 1:
+		t1 = f1;
+		break;
+	case 2:
+		t1 = f2;
+		break;
+	case 3:
+		t1 = f3;
+		break;
+	default:
+		fprintf(stderr, "%s\n", "ERROR: bad arguments");
+		return 1;
+	}
+	double i;
+	int err = integral_accurate_runge(&i, t1, global.left, global.right, eps2, n);
+	if(err)
+	{
+		fprintf(stderr, "%s\n", "Function is not integrable by riman");
+		return 1;
+	}
+	printf("%f\n", i);
+	return 2;
+
+}
 int main(int argc, char *argv[])
 {
 	if(argc == 1)
 	{
-		command_area_f(argc - 1, argv + 1);
+		command_area_f(1, argv + 1);
 		return 0;
 	}
 
@@ -182,16 +223,25 @@ int main(int argc, char *argv[])
 		.description = "calculates area of curved triangle formed by 3 functions",
 		.func = command_area_f
 	};
+	command_t command_integral =
+	{
+		.name_ext = "--integral",
+		.name_red = "-i",
+		.desc_args = "<function number>",
+		.description = "calculates integral of function",
+		.func = command_integral_f
+	};
 
 
 
-	global.command_array_size = 5;
+	global.command_array_size = 6;
 	global.command_array = malloc(sizeof(command_t) * global.command_array_size);
 	global.command_array[0] = command_root;
 	global.command_array[1] = command_help;
 	global.command_array[2] = command_read;
 	global.command_array[3] = command_border;
 	global.command_array[4] = command_area;
+	global.command_array[5] = command_integral;
 
 
 

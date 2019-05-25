@@ -5,8 +5,6 @@ CFLAGS := -g -Wall -m32
 LIBS := /usr/lib32/libc.so /usr/lib32/libm.so
 DEBUG_FOLDER := debug/
 
-LEFT_BORDER ?= -10
-RIGHT_BORDER ?= 10
 
 
 EXECUTABLE := $(DEBUG_FOLDER)calculate

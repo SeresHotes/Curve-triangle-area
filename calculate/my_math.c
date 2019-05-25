@@ -43,9 +43,9 @@ void swaplf(double *a, double *b)
 double root(math_func_t f, math_func_t g, math_func_t f_der, math_func_t g_der,
   double left, double right, double eps)
 {
-	if(convexValue(f, g, left, right) * ((f(right) - g(right)) - (f(left) - g(left))) < 0)
+	if(convexValue(f, g, left, right) * ((f(right) - g(right)) - (f(left) - g(left))) > 0)
 		swaplf(&left, &right);
-	while(fabsl(f(right) - f(left)) > 2 * eps || right - left > 2 * eps)
+	while(fabsl((f(right) - g(right)) - (f(left) - g(left))) > 2 * eps && fabsl(right - left) > 2 * eps)
 	{
 		double l = aproach_chord(f, g, left, right);
 		double r = aproach_newton(f, g, f_der, g_der, right);
@@ -102,12 +102,12 @@ int integral_accurate_runge(double *result, math_func_t f, double left,
 		s2 = s1;
 		s1 = integral_simpson(f, left, right, n);
 
-		if(n < MAX_N) // Garants no looping
+		if(n > MAX_N) // Garants no looping
 		{
 			ret = -1;
 			break;
 		}
-	} while(fabsl(s1 - s2) / 15); //for simpson method
+	} while(fabsl(s1 - s2) / 15 > eps ); //for simpson method
 	*result = s1;
 	return ret;
 }

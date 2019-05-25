@@ -9,7 +9,7 @@
 void gen_sample_init(FILE* file, char *fun_name)
 {
 	fprintf(file, "global %s\n", fun_name);
-	fprintf(file, "CEXTERN exp\n");
+	fprintf(file, "EXTERN exp\n");
 	fprintf(file, "%s:\n", fun_name);
 	fprintf(file, "\tpush ebp\n");
 	fprintf(file, "\tmov ebp, esp\n\n");
@@ -42,7 +42,7 @@ void gen_sample_unar(FILE* file, int op)
 		fprintf(file, "\tmov ebx, esp\n");
 		fprintf(file, "\tand esp, -16\n");
 		fprintf(file, "\tsub esp, 16\n");
-		fprintf(file, "\tfstp qword[ebx]\n");
+		fprintf(file, "\tfstp qword[esp]\n");
 		fprintf(file, "\tcall exp\n");
 		fprintf(file, "\tmov esp, ebx\n");
 
@@ -98,6 +98,8 @@ void gen_sample_stop(FILE *file)
 {
 	fprintf(file, "\tfld qword[esp]\n");
 	fprintf(file, "\tadd esp, 8\n");
+
+	fprintf(file, "\tpop ebx\n");
 	fprintf(file, "\tpop ebp\n");
 	fprintf(file, "\tret\n");
 }

@@ -6,6 +6,7 @@
 
 #include "polka_read.h"
 #include <stdio.h>
+#include <string.h>
 
 int polka_realize_word(char* word, int* op_base, int* op, double* value)
 {
@@ -49,7 +50,7 @@ int polka_realize_word(char* word, int* op_base, int* op, double* value)
 			*op = PLU;
 			break;
 		case '-':
-			if(word[1] == ' ')
+			if(strcmp(word, "-") == 0)
 				*op = MIN;
 			else
 			{
