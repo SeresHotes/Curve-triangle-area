@@ -37,7 +37,7 @@ int command_generate_f(int argc, char *argv[])
 
 	gen_init(fw);
 	gen_make_fun(fw, argv[2], op);
-
+	op_node_delete_tree(op);
 
 	fclose(fw);
 	free(str);
@@ -61,7 +61,7 @@ int command_generate_der_f(int argc, char *argv[])
 	}
 
 	op_node_t *op = op_read_and_get_tree(file);
-	op = der_get_der_function(op);
+	op_node_t *op1 = der_get_der_function(op);
 	fclose(file);
 
 
@@ -72,8 +72,10 @@ int command_generate_der_f(int argc, char *argv[])
 
 
 	gen_init(fw);
-	gen_make_fun(fw, argv[2], op);
+	gen_make_fun(fw, argv[2], op1);
 
+	op_node_delete_tree(op1);
+	op_node_delete_tree(op);
 
 	fclose(fw);
 	free(str);

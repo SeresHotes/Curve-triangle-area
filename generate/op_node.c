@@ -110,3 +110,11 @@ void op_node_delete(op_node_t *node)
 		free(node->args);
 	free(node);
 }
+void op_node_delete_tree(op_node_t *node)
+{
+	for(int i = 0; i < node->count; i++)
+	{
+		op_node_delete_tree(node->args[i]);
+	}
+	op_node_delete(node);
+}

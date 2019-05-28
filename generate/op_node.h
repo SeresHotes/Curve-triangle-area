@@ -63,4 +63,5 @@ op_node_t *op_node_create_const(double number);
 op_node_t *op_node_create_x();
 
 void op_node_delete(op_node_t *node);
+void op_node_delete_tree(op_node_t *node);
 #endif // OP_NODE_H
