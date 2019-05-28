@@ -22,7 +22,6 @@ typedef struct{
 typedef struct{
 	command_t *command_array;
 	int command_array_size;
-	char *input_name;
 	double left, right;
 	double eps;
 

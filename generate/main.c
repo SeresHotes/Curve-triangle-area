@@ -16,9 +16,7 @@ int command_generate_f(int argc, char *argv[])
 		return 1;
 	}
 
-	char *str = malloc(strlen (argv[1]));
-	strcpy(str, argv[1]);
-	FILE *file = fopen(str, "r");
+	FILE *file = fopen(argv[1], "r");
 	if(!file)
 	{
 		fprintf(stderr, "%s\n", "ERROR: file doesn't exist");
@@ -40,7 +38,6 @@ int command_generate_f(int argc, char *argv[])
 	op_node_delete_tree(op);
 
 	fclose(fw);
-	free(str);
 	return 3;
 }
 int command_generate_der_f(int argc, char *argv[])
@@ -51,9 +48,7 @@ int command_generate_der_f(int argc, char *argv[])
 		return 1;
 	}
 
-	char *str = malloc(strlen (argv[1]));
-	strcpy(str, argv[1]);
-	FILE *file = fopen(str, "r");
+	FILE *file = fopen(argv[1], "r");
 	if(!file)
 	{
 		fprintf(stderr, "%s\n", "ERROR: file doesn't exist");
@@ -78,7 +73,6 @@ int command_generate_der_f(int argc, char *argv[])
 	op_node_delete_tree(op);
 
 	fclose(fw);
-	free(str);
 	return 3;
 }
 

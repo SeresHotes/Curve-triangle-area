@@ -7,8 +7,8 @@ f3:
 
 	push ebx
 	finit
-	push 1072693248
-	push 0
+	push 1074118410
+	push 2333366121
 
 	mov ecx, dword[ebp + 8]
 	mov edx, dword[ebp + 12]
@@ -17,7 +17,7 @@ f3:
 
 	fld qword[esp + 8]
 	fld qword[esp]
-	fdivp st1, st0
+	fsubp
 	add esp, 8
 	fstp qword[esp]
 
