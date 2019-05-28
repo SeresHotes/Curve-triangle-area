@@ -31,7 +31,7 @@ void _gen_make_fun(op_node_t *top, FILE *file)
 		gen_sample_x(file);
 		break;
 	case CONST:
-		gen_sample_const(file, top->value);
+		gen_sample_const(file, top->op, top->value);
 		break;
 	case UNAR:
 		_gen_make_fun(top->args[0], file);

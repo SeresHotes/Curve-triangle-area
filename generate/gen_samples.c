@@ -18,10 +18,24 @@ void gen_sample_init(FILE* file, char *fun_name)
 	fprintf(file, "\tfinit\n");
 }
 
-void gen_sample_const(FILE* file, double value)
+void gen_sample_const(FILE* file, int op, double value)
 {
-	fprintf(file, "\tpush %u\n"
-				  "\tpush %u\n\n", ((uint32_t*)&value)[1], ((uint32_t*)&value)[0]);
+
+	switch(op)
+	{
+	case CON_E:
+		value = 2.7182818284590452354;
+		break;
+	case CON_PI:
+		value = 3.14159265358979323846;
+		break;
+	default:
+		break;
+	}
+
+	fprintf(file, "\tpush %u\n", ((uint32_t*)&value)[1]);
+	fprintf(file, "\tpush %u\n\n", ((uint32_t*)&value)[0]);
+
 }
 
 void gen_sample_x(FILE* file)

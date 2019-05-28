@@ -14,6 +14,7 @@ int polka_realize_word(char* word, int* op_base, int* op, double* value)
 	{
 		sscanf(word, "%lf", value);
 		*op_base = CONST;
+		*op = NUM;
 		return 0;
 	} else if(word[0] >= 'a' && word[0] <= 'z')
 	{
@@ -21,7 +22,13 @@ int polka_realize_word(char* word, int* op_base, int* op, double* value)
 		switch(word[0])
 		{
 		case 'e':
-			*op = EXP;
+			if(strcmp("e", word) == 0)
+			{
+				*op_base = CONST;
+				*op = CON_E;
+			}
+			else
+				*op = EXP;
 			break;
 		case 's':
 			*op = SIN;
@@ -37,6 +44,10 @@ int polka_realize_word(char* word, int* op_base, int* op, double* value)
 			break;
 		case 'x':
 			*op_base = SPEC_X;
+			break;
+		case 'p':
+			*op_base = CONST;
+			*op = CON_PI;
 			break;
 		default:
 			fprintf(stderr, "%s %s\n", "ERROR: can't realize word: ", word);
@@ -55,6 +66,7 @@ int polka_realize_word(char* word, int* op_base, int* op, double* value)
 			else
 			{
 				*op_base = CONST;
+				*op = NUM;
 				sscanf(word, "%lf", value);
 			}
 			break;
