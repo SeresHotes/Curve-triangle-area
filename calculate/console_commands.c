@@ -14,7 +14,6 @@
 
 global_t global =
 {
-	.input_name = "f1.out",
 	.left = LEFT_BORDER,
 	.right = RIGHT_BORDER,
 	.eps = 0.00001

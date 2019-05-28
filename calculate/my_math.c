@@ -47,6 +47,7 @@ double root(math_func_t f, math_func_t g, math_func_t f_der, math_func_t g_der,
 		swaplf(&left, &right);
 	while(fabsl((f(right) - g(right)) - (f(left) - g(left))) > 2 * eps && fabsl(right - left) > 2 * eps)
 	{
+        double k = fabsl((f(right) - g(right)) - (f(left) - g(left)));
 		double l = aproach_chord(f, g, left, right);
 		double r = aproach_newton(f, g, f_der, g_der, right);
 		left = l;

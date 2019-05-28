@@ -70,7 +70,6 @@ int command_generate_der_f(int argc, char *argv[])
 	gen_make_fun(fw, argv[2], op1);
 
 	op_node_delete_tree(op1);
-	op_node_delete_tree(op);
 
 	fclose(fw);
 	return 3;
