@@ -59,7 +59,7 @@ void op_node_config_x(op_node_t *node);
  */
 op_node_t *op_node_create_unar(op_un_t op, op_node_t *arg);
 op_node_t *op_node_create_binar(op_bin_t op, op_node_t *arg1, op_node_t *arg2);
-op_node_t *op_node_create_const(double number);
+op_node_t *op_node_create_const(op_const_t op, double number);
 op_node_t *op_node_create_x();
 
 void op_node_delete(op_node_t *node);

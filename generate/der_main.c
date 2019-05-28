@@ -60,7 +60,7 @@ op_node_t *der_get_der_function(op_node_t *top)
 			t2 = op_node_create_binar(MUL, 0, 0);
 			top->args[1] = t2;
 
-			t3 = op_node_create_const(-1);
+			t3 = op_node_create_const(NUM, -1);
 			t2->args[0] = t3;
 
 			t1 = der_get_der_function(t1);
@@ -102,7 +102,7 @@ op_node_t *der_get_der_function(op_node_t *top)
 			t2 = op_node_create_binar(MUL, 0, 0);
 			top->args[1] = t2;
 
-			t3 = op_node_create_const(-1);
+			t3 = op_node_create_const(NUM, -1);
 			t2->args[0] = t3;
 
 			t1 = der_get_der_function(t1);

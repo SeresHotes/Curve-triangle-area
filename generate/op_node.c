@@ -84,11 +84,12 @@ op_node_t *op_node_create_binar(op_bin_t op, op_node_t *arg1, op_node_t *arg2)
 	n->count = 2;
 	return n;
 }
-op_node_t *op_node_create_const(double number)
+op_node_t *op_node_create_const(op_const_t op, double number)
 {
 
 	op_node_t *n = malloc(sizeof(n[0]));
 	n->op_base = CONST;
+	n->op = op;
 	n->value = number;
 	n->args = 0;
 	n->count = 0;

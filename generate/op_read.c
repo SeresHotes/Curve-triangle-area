@@ -27,7 +27,7 @@ op_node_t * op_read_and_get_tree(FILE *file)
 
 		if(op_base == CONST)
 		{
-			op_node_t *t = op_node_create_const(value);
+			op_node_t *t = op_node_create_const(op, value);
 			st = stack_push(st, t);
 			continue;
 		}
