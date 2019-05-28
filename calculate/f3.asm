@@ -7,8 +7,8 @@ f3:
 
 	push ebx
 	finit
-	push 1074118410
-	push 2333366121
+	push 1074790400
+	push 0
 
 	mov ecx, dword[ebp + 8]
 	mov edx, dword[ebp + 12]

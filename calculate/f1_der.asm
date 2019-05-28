@@ -7,8 +7,8 @@ f1_der:
 
 	push ebx
 	finit
-	push 1074118410
-	push 2333366121
+	push 0
+	push 0
 
 	fld qword[esp]
 	add esp, 8

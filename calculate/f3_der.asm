@@ -7,8 +7,8 @@ f3_der:
 
 	push ebx
 	finit
-	push 1074118410
-	push 2333366121
+	push 0
+	push 0
 
 	push 1074118410
 	push 2333366121
